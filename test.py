@@ -217,7 +217,9 @@ class RefactoredConversions(unittest.TestCase):
                 self.assertAlmostEqual(expected, actual, places=1,
                                        msg=f'{from_unit} to {to_unit}')
 
-        self.assertEqual(123, convert('Meter', 'Meter', 123))
+        self.assertEqual(123, convert('Meter', 'Meter', 123),
+                         msg='Converting from one unit to itself '
+                             'should return the same value')
 
         with self.assertRaises(ConversionNotPossible,
                                msg='Converting from incompatible units '
